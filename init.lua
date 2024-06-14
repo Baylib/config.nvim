@@ -1,3 +1,54 @@
+-- Remapping altgr keys on a Uk extended keyboard to a French Friendly version
+--     ,---,---,---,---,---,---,---,---,---,---,---,---,---,-------,
+--     |   |   |   |   |   |   |   |   |   |   |   |   |   | <-    |
+--     |---'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-----|
+--     | ->| |   | è | é |   |   | ê | œ | î | ô |   |   |   |     |
+--     |-----',--',--',--',--',--',--',--',--',--',--',--',--'|    |
+--     | Caps | á |   |   |   |   |   |   |   |   |   |   |   |    |
+--     |----,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'---'----|
+--     |    |   |   |   | ç |   |   |   |   |   |   |   |          |
+--     |----'-,-',--'--,'---'---'---'---'---'---'-,-'---',--,------|
+--     | ctrl |  | alt |                          |altgr |  | ctrl |
+--     '------'  '-----'--------------------------'------'  '------'
+--
+-- Function to create insert mode mappings
+local function ukfr_imap(lhs, rhs)
+  vim.api.nvim_set_keymap('i', lhs, rhs, { noremap = true, silent = true })
+end
+
+-- Function to create normal mode 'r' command mappings
+local function ukfr_rnmap(lhs, rhs)
+  vim.api.nvim_set_keymap('n', 'r' .. lhs, 'r' .. rhs, { noremap = true, silent = true })
+end
+
+-- Insert mode remappings
+ukfr_imap('á', 'à')
+ukfr_imap('Á', 'À')
+ukfr_imap('ẃ', 'è')
+ukfr_imap('Ẃ', 'È')
+ukfr_imap('ý', 'ê')
+ukfr_imap('Ý', 'Ê')
+ukfr_imap('ú', 'œ')
+ukfr_imap('Ú', 'Œ')
+ukfr_imap('í', 'î')
+ukfr_imap('Í', 'Î')
+ukfr_imap('ó', 'ô')
+ukfr_imap('Ó', 'Ô')
+
+-- Normal mode 'r' command remappings
+ukfr_rnmap('á', 'à')
+ukfr_rnmap('Á', 'À')
+ukfr_rnmap('ẃ', 'è')
+ukfr_rnmap('Ẃ', 'È')
+ukfr_rnmap('ý', 'ê')
+ukfr_rnmap('Ý', 'Ê')
+ukfr_rnmap('ú', 'œ')
+ukfr_rnmap('Ú', 'Œ')
+ukfr_rnmap('í', 'î')
+ukfr_rnmap('Í', 'Î')
+ukfr_rnmap('ó', 'ô')
+ukfr_rnmap('Ó', 'Ô')
+
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
