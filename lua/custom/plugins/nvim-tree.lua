@@ -11,12 +11,20 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require('nvim-tree').setup({
-          view = {
+      require('nvim-tree').setup {
+        disable_netrw = true,
+        hijack_netrw = true,
+        hijack_cursor = true,
+        hijack_unnamed_buffer_when_opening = false,
+        sync_root_with_cwd = true,
+        view = {
           width = 50,
-          side = "right",
+          side = 'right',
         },
-      })
+        filesystem_watchers = {
+          enable = true,
+        },
+      }
     end,
   },
 }

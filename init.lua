@@ -1,3 +1,6 @@
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -72,9 +75,7 @@ vim.opt.scrolloff = 10
 --  See `:help vim.keymap.set()`
 
 -- nvimtree
--- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+
 vim.keymap.set('n', '<C-n>', '<cmd>NvimTreeToggle<CR>', { desc = 'nvimtree toggle window' })
 vim.keymap.set('n', '<leader>n', '<cmd>NvimTreeFocus<CR>', { desc = 'nvimtree focus window' })
 
@@ -835,4 +836,4 @@ require('lazy').setup({
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 eK
+-- vim: ts=2 sts=2 sw=2 et
