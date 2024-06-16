@@ -569,7 +569,7 @@ require('lazy').setup({
           end,
           capabilities = capabilities,
           filetypes = { 'rust' },
-          root_dir = util.root_pattern 'Cargo.toml',
+          root_dir = require('lspconfig/util').root_pattern 'Cargo.toml',
           settings = {
             ['rust-analyzer'] = {
               cargo = {
