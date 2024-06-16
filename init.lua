@@ -560,8 +560,11 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
-        --
+        tsserver = {
+          on_attach = on_attach,
+          filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
+          cmd = { 'typescript-language-server', '--stdio' },
+        },
 
         rust_analyzer = {
           on_attach = function(client, bufnr)
