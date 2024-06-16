@@ -1,3 +1,12 @@
+-- Shell options
+-- Sets the shell to use for system() and ! commands
+vim.opt.shell = 'pwsh.exe'
+vim.opt.shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command '
+vim.opt.shellxquote = ''
+vim.opt.shellquote = ''
+vim.opt.shellredir = '2>&1 | Out-File -Encoding UTF8 %s'
+vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s'
+
 -- disable netrw at the very start of your init.lua (required by nvimtree)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -545,8 +554,6 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -555,6 +562,24 @@ require('lazy').setup({
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         --
+
+        rust_analyzer = {
+          on_attach = function(client, bufnr)
+            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+          end,
+          capabilities = capabilities,
+          filetypes = { 'rust' },
+          root_dir = util.root_pattern 'Cargo.toml',
+          settings = {
+            ['rust-analyzer'] = {
+              cargo = {
+                allFeatures = true,
+              },
+            },
+          },
+        },
+
+        pyright = {},
 
         lua_ls = {
           -- cmd = {...},
