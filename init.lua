@@ -1,11 +1,11 @@
 -- Shell options
 -- Sets the shell to use for system() and ! commands
-vim.opt.shell = 'pwsh.exe'
-vim.opt.shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command '
-vim.opt.shellxquote = ''
-vim.opt.shellquote = ''
-vim.opt.shellredir = '2>&1 | Out-File -Encoding UTF8 %s'
-vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s'
+-- vim.opt.shell = 'pwsh.exe'
+-- vim.opt.shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command '
+-- vim.opt.shellxquote = ''
+-- vim.opt.shellquote = ''
+-- vim.opt.shellredir = '2>&1 | Out-File -Encoding UTF8 %s'
+-- vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s'
 
 -- disable netrw at the very start of your init.lua (required by nvimtree)
 vim.g.loaded_netrw = 1
@@ -22,7 +22,7 @@ vim.g.maplocalleader = ' '
 --     |---'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-----|
 --     | ->| |   | è | é |   |   | ê | œ | î | ô |   |   |   |     |
 --     |-----',--',--',--',--',--',--',--',--',--',--',--',--'|    |
---     | Caps | á |   |   |   |   |   |   |   |   |   |   |   |    |
+--     | Caps | à |   |   |   |   |   |   |   |   |   |   |   |    |
 --     |----,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'---'----|
 --     |    |   |   |   | ç |   |   |   |   |   |   |   |          |
 --     |----'-,-',--'--,'---'---'---'---'---'---'-,-'---',--,------|
@@ -133,6 +133,12 @@ vim.opt.scrolloff = 10
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
+
+-- Yank into system clipboard
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y') -- yank motion
+-- Paste from system clipboard
+vim.keymap.set('n', '<leader>p', '"+p') -- paste after cursor
+vim.keymap.set('n', '<leader>P', '"+P') -- paste before cursor
 
 -- nvimtree
 
