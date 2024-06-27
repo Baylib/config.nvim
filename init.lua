@@ -1,11 +1,16 @@
 -- Shell options
+-- Sets the shell to pwsh.exe if on windows
 -- Sets the shell to use for system() and ! commands
--- vim.opt.shell = 'pwsh.exe'
--- vim.opt.shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command '
--- vim.opt.shellxquote = ''
--- vim.opt.shellquote = ''
--- vim.opt.shellredir = '2>&1 | Out-File -Encoding UTF8 %s'
--- vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s'
+
+local is_windows = vim.fn.has 'win64' == 1 or vim.fn.has 'win32' == 1 or vim.fn.has 'win16' == 1
+if is_windows then
+  vim.opt.shell = 'pwsh.exe'
+  vim.opt.shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command '
+  vim.opt.shellxquote = ''
+  vim.opt.shellquote = ''
+  vim.opt.shellredir = '2>&1 | Out-File -Encoding UTF8 %s'
+  vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s'
+end
 
 -- disable netrw at the very start of your init.lua (required by nvimtree)
 vim.g.loaded_netrw = 1
